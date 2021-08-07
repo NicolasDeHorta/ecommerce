@@ -29,7 +29,7 @@ var login = () => {
     let tryUser = getLoginInfo()
     var registeredUser = usersList.filter(user => (user.mail === tryUser.mail && user.pass === tryUser.pass))   
 
-    registeredUser.length === 1 ? window.location.href = "./index.html" : alert("parece que no estas registrado o el usuario es Incorrecto")
+    registeredUser.length === 1 ? window.location.href = "./home.html" : alert("parece que no estas registrado o el usuario es Incorrecto")
 }
 
 
