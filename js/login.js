@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     {
         mail: "nicodh1103@gmail.com",
         pass: "chau4321"
+    },
+    {
+        mail: "admin",
+        pass: "admin"
     }
 ]
 
