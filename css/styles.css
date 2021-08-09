@@ -27,6 +27,13 @@
   }
 }
 
+.tip-login {
+  position: absolute;
+  right: 4rem;
+  bottom: 0;
+  
+}
+
 .jumbotron p:last-child {
   margin-bottom: 0;
 }

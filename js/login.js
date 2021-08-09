@@ -9,10 +9,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         pass: "hola1234"
     },
     {
-        mail: "nicodh1103@gmail.com",
-        pass: "chau4321"
-    },
-    {
         mail: "admin",
         pass: "admin"
     }
@@ -29,11 +25,11 @@ var getLoginInfo = () => {
 }
 
 
-var login = () => {
+var login = () => { 
     let tryUser = getLoginInfo()
     var registeredUser = usersList.filter(user => (user.mail === tryUser.mail && user.pass === tryUser.pass))   
 
-    registeredUser.length === 1 ? window.location.href = "./home.html" : alert("parece que no estas registrado o el usuario es Incorrecto")
+    registeredUser.length !== 0 ? window.location.href = "./home.html" : alert("Quizas quieras mirar la esquina inferior derecha en busca de alguna pista")
 }
 
 
