@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     var usersList = [
     {
-        mail: "dehorta.n@gmail.com",
+        mail: "dummy@correo.com",
         pass: "hola1234"
     },
     {
@@ -29,7 +29,7 @@ var login = () => {
     let tryUser = getLoginInfo()
     var registeredUser = usersList.filter(user => (user.mail === tryUser.mail && user.pass === tryUser.pass))   
 
-    registeredUser.length !== 0 ? window.location.href = "./home.html" : alert("Quizas quieras mirar la esquina inferior derecha en busca de alguna pista")
+    registeredUser.length > 0 ? window.location.href = "./home.html" : alert("Quizas quieras mirar la esquina inferior derecha en busca de alguna pista")
 }
 
 
