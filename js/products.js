@@ -84,8 +84,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
 
 
 
-document.addEventListener("DOMContentLoaded", function (e) {
-    const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
+
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             sortAndShowProducts(ORDER_ASC_BY_NAME, resultObj.data);
@@ -129,4 +128,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         showProductsList();
     });
-});
