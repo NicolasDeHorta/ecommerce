@@ -59,17 +59,16 @@ var GoogleAuth;
       var user = GoogleAuth.currentUser.get();
       var isAuthorized = user.hasGrantedScopes(SCOPE);
       if (isAuthorized) {
-        $('#sign-in-or-out-button').html('Sign out');
+        $('#sign-in-or-out-button').html('Log Out');
         $('#revoke-access-button').css('display', 'inline-block');
-        $('#auth-status').html('You are currently signed in and have granted ' +
+        $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App' +
             'access to this app.');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => window.location.href = "./home.html");
       } else {
-        $('#sign-in-or-out-button').html('Sign In/Authorize');
+        $('#sign-in-or-out-button').html('Ingresar/Authorización con Google');
         $('#revoke-access-button').css('display', 'none');
-        $('#auth-status').html('You have not authorized this app or you are ' +
-            'signed out.');
+        $('#auth-status').html('No has autorizado a esta App o estas desconectado');
         $('#continue-access-button').css('display', 'none')
       }
     }
