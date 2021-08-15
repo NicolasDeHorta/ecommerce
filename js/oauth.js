@@ -1,4 +1,4 @@
-const KEY  = "fQbYKlFs-XernPCDUNdMkMr1"
+const KEY  = "AIzaSyAwcApNGn-BeZZh1lPBuoAusRXaKehVhm8"
 const CLIENT_ID = "184379824246-a8fogv4bo949eepphis8n2cfsn4os3en.apps.googleusercontent.com"
 var GoogleAuth;
     var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
