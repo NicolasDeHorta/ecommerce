@@ -1,4 +1,5 @@
-
+const KEY  = "fQbYKlFs-XernPCDUNdMkMr1"
+const CLIENT_ID = "184379824246-a8fogv4bo949eepphis8n2cfsn4os3en.apps.googleusercontent.com"
 var GoogleAuth;
     var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
     function handleClientLoad() {
@@ -15,8 +16,8 @@ var GoogleAuth;
       // Get API key and client ID from API Console.
       // 'scope' field specifies space-delimited list of access scopes.
       gapi.client.init({
-          'apiKey': 'fQbYKlFs-XernPCDUNdMkMr1',
-          'clientId': '184379824246-a8fogv4bo949eepphis8n2cfsn4os3en.apps.googleusercontent.com',
+          'apiKey': KEY,
+          'clientId': CLIENT_ID,
           'discoveryDocs': [discoveryUrl],
           'scope': SCOPE
       }).then(function () {
