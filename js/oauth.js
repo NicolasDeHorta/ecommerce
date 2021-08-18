@@ -61,8 +61,7 @@ var GoogleAuth;
       if (isAuthorized) {
         $('#sign-in-or-out-button').html('Log Out');
         $('#revoke-access-button').css('display', 'inline-block');
-        $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App' +
-            'access to this app.');
+        $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => window.location.href = "./home.html");
       } else {
