@@ -6,7 +6,12 @@
     font-weight: bold;
 }
 
+.warning-text {
+  font-weight: 700;
+  color: transparent;
+  font-size: 0.8rem;
 
+}
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;

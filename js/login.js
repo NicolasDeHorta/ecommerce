@@ -24,8 +24,8 @@ var login = () => {
     let tryUser = getLoginInfo()
     let registeredUser = usersList.filter(user => (user.mail === tryUser.mail && user.pass === tryUser.pass))
 
-    registeredUser.length > 0 ? window.location.href = "./home.html" : alert("Quizas quieras mirar la esquina inferior derecha en busca de alguna pista")
-}
+    registeredUser.length > 0 ? window.location.href = "./home.html" : $(".warning-text")[0].style.color = "red"
+}   
 
 
 $("#login-button").click(login)
