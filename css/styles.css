@@ -5,6 +5,18 @@
 .jumbotron .display-4{
     font-weight: bold;
 }
+#search-bar {
+  width: 30%;
+  margin-left: auto;
+}
+
+.btn-block {
+  margin-top: 8px;
+}
+
+.btn-group-toggle {
+  margin-bottom: 0
+}
 
 .warning-text {
   font-weight: 700;
