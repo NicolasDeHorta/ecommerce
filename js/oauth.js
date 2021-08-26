@@ -63,8 +63,11 @@ var GoogleAuth;
         $('#revoke-access-button').css('display', 'inline-block');
         $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
-        $('#continue-access-button').click(() => window.location.href = "./home.html");
-      } else {
+        $('#continue-access-button').click(() => {
+          sessionStorage.setItem('user', GoogleAuth.currentUser.get())
+          window.location.href = "./home.html"
+      })
+     } else {
         $('#sign-in-or-out-button').html('Ingresar/Authorización con Google');
         $('#revoke-access-button').css('display', 'none');
         $('#auth-status').html('No has autorizado a esta App o estas desconectado');
