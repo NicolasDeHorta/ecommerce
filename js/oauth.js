@@ -64,7 +64,7 @@ var GoogleAuth;
         $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => {
-          sessionStorage.setItem('user', GoogleAuth.currentUser.get())
+          sessionStorage.setItem('user', GoogleAuth.currentUser.email)
           window.location.href = "./home.html"
       })
      } else {
