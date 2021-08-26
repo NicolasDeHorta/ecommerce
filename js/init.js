@@ -16,6 +16,13 @@ var hideSpinner = function(){
 }
 
 
+// Redireccion a pantalla de login si no tiene usuario
+if (!sessionStorage.getItem('user')) {
+  window.location.href = "./index.html"
+} else {
+  $("a").eq(5).html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")}`)
+}
+
 
 var getJSONData = function(url){
     var result = {};

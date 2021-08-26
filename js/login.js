@@ -1,14 +1,3 @@
-var usersList = [
-    {
-        mail: "dummy@correo.com",
-        pass: "hola1234"
-    },
-    {
-        mail: "admin",
-        pass: "admin"
-    }
-]
-
 var getLoginInfo = () => {
     let mail = $("[name='email-address']").val();
     let pass = $("[name='password']").val();
@@ -22,9 +11,9 @@ var getLoginInfo = () => {
 
 var login = () => {
     let tryUser = getLoginInfo()
-    let registeredUser = usersList.filter(user => (user.mail === tryUser.mail && user.pass === tryUser.pass))
 
-    registeredUser.length > 0 ? window.location.href = "./home.html" : $(".warning-text")[0].style.color = "red"
+    sessionStorage.setItem('user', tryUser.mail);
+    (tryUser.mail && tryUser.pass) ? window.location.href = "./home.html" : $(".warning-text")[0].style.color = "red"
 }   
 
 

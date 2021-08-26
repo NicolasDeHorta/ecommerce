@@ -54,6 +54,12 @@ var sortList = parameter => {
         case 'priceDesc':
             productsArray.sort((a, b) => parseInt(b.cost) - parseInt(a.cost))
             break;
+        case 'countAsc':
+            productsArray.sort((a, b) => parseInt(a.soldCount) - parseInt(b.soldCount))
+            break;
+        case 'countDesc':
+            productsArray.sort((a, b) => parseInt(b.soldCount) - parseInt(a.soldCount))
+            break;
         case 'alphabeticalAsc':
             productsArray.sort((a,b) => a.name > b.name ? 1 : -1)
             break;
@@ -95,6 +101,8 @@ var filterText = () => {
 //Botones de filtros
 $("#filter-price-ascending").click(() => sortList('priceAsc')) 
 $("#filter-price-descending").click(() => sortList('priceDesc')) 
+$("#filter-count-ascending").click(() => sortList('countAsc')) 
+$("#filter-count-descending").click(() => sortList('countDesc')) 
 $("#filter-alphabetical").click(() => sortList('alphabeticalAsc')) 
 $("#filter-anti-alphabetical").click(() => sortList('alphabeticalDesc')) 
 $("#filter-reset").click(() => sortList('filterReset'))
