@@ -23,6 +23,10 @@ if (!sessionStorage.getItem('user')) {
   $("a").eq(5).html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")}`)
 }
 
+//logout con el ultimo link del navbar
+$("a").eq(6).click( () => { 
+  sessionStorage.removeItem('user')
+}) 
 
 var getJSONData = function(url){
     var result = {};
@@ -48,8 +52,3 @@ var getJSONData = function(url){
         return result;
     });
 }
-
-//logout con el ultimo link del navbar
-$("a").eq(6).click( () => { 
-  sessionStorage.removeItem('user')
-}) 

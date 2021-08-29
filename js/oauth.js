@@ -40,6 +40,9 @@ var GoogleAuth;
         });
       });
     }
+
+    document.getElementById("jsdhfga").addEventListener("click", () => {    })
+    
   
     function handleAuthClick() {
       if (GoogleAuth.isSignedIn.get()) {
@@ -64,7 +67,7 @@ var GoogleAuth;
         $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => {
-          sessionStorage.setItem('user', GoogleAuth.currentUser.get().Ts.Pe)
+          sessionStorage.setItem('user', GoogleAuth.currentUser.get().Ws.Qe)
           window.location.href = "./home.html"
       })
      } else {
