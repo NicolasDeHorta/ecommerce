@@ -1,3 +1,5 @@
+//NavBar modular asi no hay que cambiarlo en todas las paginas cuando hacemos una modificacion
+//prepend lo agrega como 1st child del body
 $("body").prepend(`<nav class="site-header sticky-top py-1 bg-dark">
 <div class="container d-flex flex-column flex-md-row justify-content-between">
   <a class="py-2 d-none d-md-inline-block" href="home.html">Inicio</a>
@@ -15,3 +17,12 @@ $("body").prepend(`<nav class="site-header sticky-top py-1 bg-dark">
   </div>
 </div>
 </nav>`)
+
+//Agregamos animaciones de SlideUp y SlideDown al elemento del usuario en el NavBar
+ $('.dropdown').on('show.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown("fast");
+  });
+
+  $('.dropdown').on('hide.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp("fast");
+  });
