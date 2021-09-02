@@ -88,6 +88,10 @@ footer p {
   transition: ease-in-out color .15s;
 }
 
+.small {
+  color: #BBB
+}
+
 .light-text {
   color: white;
 }

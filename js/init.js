@@ -20,13 +20,18 @@ var hideSpinner = function(){
 if (!sessionStorage.getItem('user')) {
   window.location.href = "./index.html"
 } else {
-  $("a").eq(5).html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")}`)
+  $("#navbar-user").html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")} <span class="small"> &nbsp; &nbsp Last Login: ${sessionStorage.getItem('logInDate')}</span>`)
 }
 
 //logout con el ultimo link del navbar
-$("a").eq(6).click( () => { 
+$("#logout").click( () => { 
   sessionStorage.removeItem('user')
+  window.location.href = "./index.html"
 }) 
+
+
+
+
 
 var getJSONData = function(url){
     var result = {};
