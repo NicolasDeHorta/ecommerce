@@ -2,6 +2,18 @@
     font-family: 'Raleway', serif !important;
 }
 
+
+nav {
+  position: sticky;
+  top: 0px;
+  z-index: 3;
+}
+.site-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .jumbotron .display-4{
     font-weight: bold;
 }
@@ -41,13 +53,6 @@
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
 .tip-login {
   position: absolute;
   right: 4rem;
@@ -72,6 +77,10 @@
 
 .jumbotron .lead{
   font-size: 38px;
+}
+
+.cover-img {
+  width: 100%;
 }
 
 footer {
@@ -175,4 +184,25 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+
+@media (max-width: 1172px) {
+
+  .cover-img {
+    content: url("../img/login.png")
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  nav {
+    position: static;
+  }
+
+  .container {
+    text-align: center;
+  }
+
 }
