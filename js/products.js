@@ -43,6 +43,7 @@ var showList = list => {
         
         $("#products-list").html(htmlContentToAppend) 
 
+        $(".list-group-item").on("click", () => window.location.href = "./product-info.html")
 }
 
 
@@ -109,5 +110,7 @@ $("#filter-reset").click(() => sortList('filterReset'))
 $("#price-range").click(() => filterList())
 $("#search-bar").keydown(() => filterText())
 
+
 getData()
+
 

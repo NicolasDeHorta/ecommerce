@@ -14,7 +14,7 @@ $("body").prepend(`<nav class="site-header py-1 bg-dark">
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item"  href="my-profile.html">My profile</a>
       <a class="dropdown-item" id="logout" href="index.html">Log Out</a>
-  </div>
+    </div>
 </div>
 </nav>`)
 

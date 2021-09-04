@@ -165,6 +165,19 @@ footer p {
   }
 }
 
+#productImagesGallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#productImagesGallery > img {
+  width: 15rem;
+  margin: 1rem auto;
+
+}
+
 #spinner-wrapper{
   position: fixed;
   background-color: rgba(0,0,0,0.5);
@@ -193,6 +206,10 @@ a.custom-card:hover {
     content: url("../img/login.png")
   }
 
+  .product-card {
+    flex-wrap: wrap;
+  }
+
 }
 
 @media (max-width: 720px) {
@@ -206,3 +223,86 @@ a.custom-card:hover {
   }
 
 }
+
+#overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8) none 50% / contain no-repeat;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  visibility: hidden;
+  opacity: 0;
+}
+#overlay.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+#overlay:after { /* X button icon */
+  content: "\2715";
+  position: absolute;
+  color:#fff;
+  top: 10px;
+  right:20px;
+  font-size: 2em;
+}
+
+#comment-section + dt {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+
+  
+.comments-box.container {
+  box-shadow: 2px 2px 6px #EEE;
+  padding: 0;
+  border-radius: 1rem;
+}
+
+
+.new-comment,
+.comment-card {
+  padding: 1rem;
+  border: 1px solid #EEE;
+  margin: 0
+}
+
+.comment-card:hover {
+  background-color: #EEE;
+}
+
+.comment-card:first-child {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.comment-card:last-child {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+#productImagesGallery {
+display: flex;
+flex-direction: row;
+}
+
+#productImagesGallery > img {
+  box-shadow: 4px 4px 8px #555;
+}
+
+.product-card > div > img {
+  width: 40;
+  float: left;
+  margin-right: 2rem 
+}
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+}
+

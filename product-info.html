@@ -19,19 +19,72 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/navbar.js" defer></script>
   <script src="js/init.js" defer></script>
-  <script src="js/product-info.js"></script>
+  <script src="js/product-info.js" defer></script>
 </head>
 
 <body>
-  
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container mt-5">
+
+      <div class="text-center p-4">
+        <h2 id="titulo-producto">Descripción de la Producto</h2>
+        <p class="lead">Todo lo que tienes que saber sobre este producto</p>
+      </div>
+      <div class="product-card">
+        <div>
+      <img src="" id="product-img" alt="">
     </div>
-  </div>
+    <div>
+      <h3 id="productName"></h3>
+      <hr class="my-3">
+      <dl>
+        <dt>Precio</dt>
+        <dd>
+          <p id="product-price"></p>
+        </dd>
+
+        <dt>Cantidad de productos vendidos</dt>
+        <dd>
+          <p id="product-count"></p>
+        </dd>
+
+        <dt>Descripción</dt>
+        <dd>
+          <p id="product-description"></p>
+        </dd>
+        </div>
+
+      </div>
+        <div id="overlay"></div>
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          </div>
+        </dd>
+
+
+        <div class="container" id="comment-section"></div>
+        <dt><h2>Comentarios y puntuaciones<h2></dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2 container">
+            <div class="comments-box container">
+              
+            </div>
+          </div>
+        </dd>
+
+        <dd>
+          <div class="row text-center text-lg-left pt-2 container">
+            <div class="container">
+              <textarea name="comment-text" id="comment-text" cols="90" rows="5"></textarea>
+            </div>
+          </div>
+        </dd>
+
+      </dl>
+      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver</a>
+    </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -49,7 +102,6 @@
       <div></div>
     </div>
   </div>
-
 </body>
 
 </html>

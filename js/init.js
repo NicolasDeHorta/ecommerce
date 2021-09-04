@@ -20,7 +20,8 @@ var hideSpinner = function(){
 if (!sessionStorage.getItem('user')) {
   window.location.href = "./index.html"
 } else {
-  $("#navbar-user").html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")} <span class="small"> &nbsp; &nbsp Last Login: ${sessionStorage.getItem('logInDate')}</span>`)
+  $("#navbar-user").html(`<i class="fas fa-user-tie">  </i> &nbsp; &nbsp  ${sessionStorage.getItem("user")} 
+  <span class="small"> &nbsp; &nbsp Last Login: ${sessionStorage.getItem('logInDate')}</span>`)
 }
 
 //logout con el ultimo link del navbar
