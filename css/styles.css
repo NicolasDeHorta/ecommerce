@@ -351,7 +351,7 @@ a.custom-card:hover {
 .rating>label {
   margin-left: 0;
   width: 1em;
-  font-size: 2.5vw;
+  font-size: 25px;
   color: #FFD600;
   cursor: pointer
 }
