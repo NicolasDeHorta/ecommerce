@@ -1,22 +1,30 @@
-.jumbotron, .card-body, .container, .site-header{
-    font-family: 'Raleway', serif !important;
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: 'Raleway', serif !important;
 }
 
+dt {
+  margin-top: 2rem
+}
 
 nav {
   position: sticky;
   top: 0px;
   z-index: 3;
 }
+
 .site-header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.jumbotron .display-4{
-    font-weight: bold;
+.jumbotron .display-4 {
+  font-weight: bold;
 }
+
 #search-bar {
   width: 30%;
   margin-left: auto;
@@ -24,6 +32,18 @@ nav {
 
 .fas {
   font-size: 1.5rem;
+}
+
+textarea {
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 1rem;
+  resize: none;
+}
+
+textarea:focus {
+  outline: 0;
+  box-shadow: 0 0 8px blue;
 }
 
 .btn-block {
@@ -40,6 +60,7 @@ nav {
   font-size: 0.8rem;
 
 }
+
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -57,7 +78,7 @@ nav {
   position: absolute;
   right: 4rem;
   bottom: 0;
-  
+
 }
 
 .jumbotron p:last-child {
@@ -75,7 +96,7 @@ nav {
   text-shadow: 1px 1px 2px grey;
 }
 
-.jumbotron .lead{
+.jumbotron .lead {
   font-size: 38px;
 }
 
@@ -113,15 +134,15 @@ footer p {
   color: black;
 }
 
-.dropzone{
+.dropzone {
   border: 2px dashed #0087F7;
   border-radius: 5px;
   background: white;
 }
 
-.alert{
+.alert {
   position: fixed;
-  top:80px;
+  top: 80px;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -132,9 +153,10 @@ footer p {
   position: relative;
   width: 64px;
   height: 64px;
-  top:50%;
+  top: 50%;
   left: 50%;
 }
+
 .lds-ring div {
   box-sizing: border-box;
   display: block;
@@ -147,19 +169,24 @@ footer p {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #fff transparent transparent transparent;
 }
+
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
   animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
   animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -172,19 +199,19 @@ footer p {
   justify-content: space-between;
 }
 
-#productImagesGallery > img {
+#productImagesGallery>img {
   width: 15rem;
   margin: 1rem auto;
 
 }
 
-#spinner-wrapper{
+#spinner-wrapper {
   position: fixed;
-  background-color: rgba(0,0,0,0.5);
-  width:100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
   height: 100%;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 1021;
   display: none;
 }
@@ -224,40 +251,42 @@ a.custom-card:hover {
 
 }
 
-#overlay{
+#overlay {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.8) none 50% / contain no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8) none 50% / contain no-repeat;
   cursor: pointer;
   transition: 0.3s;
-  
+
   visibility: hidden;
   opacity: 0;
 }
+
 #overlay.open {
   visibility: visible;
   opacity: 1;
 }
 
-#overlay:after { /* X button icon */
+#overlay:after {
+  /* X button icon */
   content: "\2715";
   position: absolute;
-  color:#fff;
+  color: #fff;
   top: 10px;
-  right:20px;
+  right: 20px;
   font-size: 2em;
 }
 
-#comment-section + dt {
+#comment-section+dt {
   margin-top: 4rem;
   text-align: center;
 }
 
 
-  
+.shadow-card,
 .comments-box.container {
   box-shadow: 2px 2px 6px #EEE;
   padding: 0;
@@ -287,18 +316,18 @@ a.custom-card:hover {
 }
 
 #productImagesGallery {
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-#productImagesGallery > img {
+#productImagesGallery>img {
   box-shadow: 4px 4px 8px #555;
 }
 
-.product-card > div > img {
+.product-card>div>img {
   width: 40;
   float: left;
-  margin-right: 2rem 
+  margin-right: 2rem
 }
 
 .product-card {
@@ -306,3 +335,55 @@ flex-direction: row;
   flex-direction: row;
 }
 
+/* STARS RATING */
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 0;
+  width: 15%
+}
+
+.rating>input {
+  display: none
+}
+
+.rating>label {
+  margin-left: 0;
+  width: 1em;
+  font-size: 2.5vw;
+  color: #FFD600;
+  cursor: pointer
+}
+
+.rating>label::before {
+  content: "\2605";
+  position: absolute;
+  opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+  opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+  opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+  opacity: 0.4
+}
+
+
+/* END STARS RATING */
+
+.shadow-card {
+ display: flex;
+ flex-direction: column;
+}
+
+.comment-card button {
+  margin: 1rem 1rem 0;
+  align-self: flex-end;
+}

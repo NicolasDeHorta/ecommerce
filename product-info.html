@@ -32,54 +32,67 @@
       </div>
       <div class="product-card">
         <div>
-      <img src="" id="product-img" alt="">
-    </div>
-    <div>
-      <h3 id="productName"></h3>
-      <hr class="my-3">
-      <dl>
-        <dt>Precio</dt>
-        <dd>
-          <p id="product-price"></p>
-        </dd>
+          <img src="" id="product-img" alt="">
+        </div>
+        <div>
+          <h3 id="productName"></h3>
+          <hr class="my-3">
+          <dl>
+            <dt>Precio</dt>
+            <dd>
+              <p id="product-price"></p>
+            </dd>
 
-        <dt>Cantidad de productos vendidos</dt>
-        <dd>
-          <p id="product-count"></p>
-        </dd>
+            <dt>Cantidad de productos vendidos</dt>
+            <dd>
+              <p id="product-count"></p>
+            </dd>
 
-        <dt>Descripción</dt>
-        <dd>
-          <p id="product-description"></p>
-        </dd>
+            <dt>Descripción</dt>
+            <dd>
+              <p id="product-description"></p>
+            </dd>
         </div>
 
       </div>
-        <div id="overlay"></div>
-        <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+      <div id="overlay"></div>
+      <dt>Imágenes ilustrativas</dt>
+      <dd>
+        <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+        </div>
+      </dd>
+
+
+      <div class="container " id="comment-section"></div>
+      <dt>
+        <h2>Comentarios y puntuaciones<h2>
+      </dt>
+      <dd>
+        <div class="row text-center text-lg-left pt-2 container">
+          <div class="comments-box container">
+
           </div>
-        </dd>
+        </div>
+      </dd>
 
-
-        <div class="container" id="comment-section"></div>
-        <dt><h2>Comentarios y puntuaciones<h2></dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2 container">
-            <div class="comments-box container">
-              
+      <dd>
+        <div class="row text-center text-lg-left pt-2 container">
+          <div class="container">
+            <div class="comment-card container shadow-card">
+              <h4>Add a comment...</h4>
+              <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input
+                  type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating"
+                  value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label
+                  for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+              <textarea name="comment-text" id="comment-text" cols="90" rows="3"
+                placeholder="  Add a comment..."></textarea>
+                <button class="btn btn-dark">Publicar</button>
             </div>
-          </div>
-        </dd>
 
-        <dd>
-          <div class="row text-center text-lg-left pt-2 container">
-            <div class="container">
-              <textarea name="comment-text" id="comment-text" cols="90" rows="5"></textarea>
-            </div>
           </div>
-        </dd>
+        </div>
+      </dd>
 
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver</a>
