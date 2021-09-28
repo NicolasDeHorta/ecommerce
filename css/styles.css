@@ -199,6 +199,12 @@ footer p {
   justify-content: space-between;
 }
 
+#carouselExampleIndicators {
+  width: 40rem;
+  margin: 2rem 2rem
+
+}
+
 #productImagesGallery>img {
   width: 15rem;
   margin: 1rem auto;
@@ -265,6 +271,7 @@ a.custom-card:hover {
   opacity: 0;
 }
 
+
 #overlay.open {
   visibility: visible;
   opacity: 1;
@@ -285,6 +292,10 @@ a.custom-card:hover {
   text-align: center;
 }
 
+#overlay+dt {
+text-align: center;
+font-size: 1.2rem;
+}
 
 .shadow-card,
 .comments-box.container {

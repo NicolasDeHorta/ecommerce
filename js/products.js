@@ -1,6 +1,4 @@
 let productsArray = []
-
-
 var getData = () => {
     //funcion que recopila los datos del URL
 let arr = []
@@ -9,10 +7,11 @@ fetch(PRODUCTS_URL)
 .then(data => {
 
     data.forEach((item) => arr.push(item))
+    
 
     productsArray = arr
     showList(productsArray)
-})
+})    
 }
 
 
