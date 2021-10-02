@@ -68,6 +68,8 @@ var GoogleAuth;
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => {
           sessionStorage.setItem('user', GoogleAuth.currentUser.get().Ws.Qe)
+          let date = new Date();
+          sessionStorage.setItem('logInDate', date.toLocaleString());
           window.location.href = "./home.html"
       })
      } else {
