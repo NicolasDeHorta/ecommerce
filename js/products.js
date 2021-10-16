@@ -1,27 +1,24 @@
 let productsArray = []
-var getData = () => {
-    //funcion que recopila los datos del URL
-let arr = []
-fetch(PRODUCTS_URL)
-.then(res => res.json())
-.then(data => {
 
-    data.forEach((item) => arr.push(item))
-    
+const fetchProducts = async (url) => {
+    const response = await fetch(url)
+    const data = await response.json()
 
-    productsArray = arr
+    data.forEach((item) => productsArray.push(item))
     showList(productsArray)
-})    
+
 }
 
+fetchProducts(PRODUCTS_URL)
 
-var showList = list => {
+
+const showList = list => {
     // Funcion que muestre la lista actual del array de productos
     let htmlContentToAppend = "";
 
     list.forEach(product => {
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div class="list-group-item list-group-item-action" onclick="redirect('${product.name}', '${product.imgSrc}', '${product.description}', '${product.cost}')">
             <div class="row">
                 <div class="col-3">
                     <img src=" ${product.imgSrc}" alt=" ${product.desc} " class="img-thumbnail">
@@ -42,9 +39,15 @@ var showList = list => {
         
         $("#products-list").html(htmlContentToAppend) 
 
-        $(".list-group-item").on("click", () => window.location.href = "./product-info.html")
 }
 
+var redirect = (name, imgSrc, description, cost) => {
+    sessionStorage.setItem('autoName', name)
+    sessionStorage.setItem('autoimgSrc', imgSrc)
+    sessionStorage.setItem('autoDesc', description)
+    sessionStorage.setItem('autoCost', cost)
+    window.location.href = "product-info.html"
+}
 
 var sortList = parameter => {
     switch (parameter) {
@@ -67,7 +70,7 @@ var sortList = parameter => {
             productsArray.sort((a,b) => a.name < b.name ? 1 : -1)
             break;
         case 'filterReset':
-            getData()
+            showList(productsArray)
             $("#filterMax").val(undefined)
             $("#filterMin").val(undefined)
             break;
@@ -98,6 +101,8 @@ var filterText = () => {
 }
 
 
+
+    
 //Botones de filtros
 $("#filter-price-ascending").click(() => sortList('priceAsc')) 
 $("#filter-price-descending").click(() => sortList('priceDesc')) 
@@ -108,8 +113,3 @@ $("#filter-anti-alphabetical").click(() => sortList('alphabeticalDesc'))
 $("#filter-reset").click(() => sortList('filterReset'))
 $("#price-range").click(() => filterList())
 $("#search-bar").keydown(() => filterText())
-
-
-getData()
-
-

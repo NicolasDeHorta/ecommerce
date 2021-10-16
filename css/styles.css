@@ -398,3 +398,29 @@ font-size: 1.2rem;
   margin: 1rem 1rem 0;
   align-self: flex-end;
 }
+
+º
+#cart-items {
+  margin: 0 5rem;
+  box-shadow: 1px 1px 10px 2px #BBB;
+}
+
+form {
+  margin: 5rem 0;
+}
+
+#cart-items,
+#cart-items > .list-group-item:first-child {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+#cart-items,
+#cart-items > .list-group-item:last-child {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+#buyButton {
+  margin-bottom: 3rem
+}

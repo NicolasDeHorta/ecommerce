@@ -1,34 +1,35 @@
+console.log(sessionStorage.getItem('imgSrc'))
 fetch(PRODUCT_INFO_URL)
     .then(res => res.json())
     .then(data => {
-            // console.log(data)
-            let qty = data.images.length
+        // console.log(data)
+        let qty = data.images.length
 
 
-            let imgHtml = `<div class="carousel-item active">
-        <img class="d-block w-100" src=${data.images[0]} alt="slide">
+        let imgHtml = `<div class="carousel-item active">
+        <img class="d-block w-100" src="${sessionStorage.getItem('autoimgSrc')}" alt="slide">
       </div>`
-            for (let i = 1; i < qty; i++) {
-                imgHtml += `<div class="carousel-item">
+        for (let i = 1; i < qty; i++) {
+            imgHtml += `<div class="carousel-item">
             <img class="d-block w-100" src=${data.images[i]} alt="slide">
           </div>`
 
-            }
-            $(".carousel-inner").eq(0).html(imgHtml)
+        }
+        $(".carousel-inner").eq(0).html(imgHtml)
 
 
-            let imgIndicators = `<li data-target="#carouselExampleIndicators" data-slide-to=${0} class="active"></li>`
-            for (let i = 1; i < qty; i++) {
-                imgIndicators += `<li data-target="#carouselExampleIndicators" data-slide-to=${i}></li>`
-            
+        let imgIndicators = `<li data-target="#carouselExampleIndicators" data-slide-to=${0} class="active"></li>`
+        for (let i = 1; i < qty; i++) {
+            imgIndicators += `<li data-target="#carouselExampleIndicators" data-slide-to=${i}></li>`
+
             $(".carousel-indicators").eq(0).html(imgIndicators)
 
         }
 
-        $("#titulo-producto").html(data.name)
-        $("#product-description").html(data.description)
+        $("#titulo-producto").html(sessionStorage.getItem('autoName'))
+        $("#product-description").html(sessionStorage.getItem('autoDesc'))
         $("#product-count").html(data.soldCount)
-        $("#product-price").html(`${data.currency} ${data.cost}`)
+        $("#product-price").html(`${data.currency} ${sessionStorage.getItem('autoCost')}`)
 
 
         $("#productImagesGallery > img").click((event) => {
@@ -45,23 +46,21 @@ fetch(PRODUCT_INFO_URL)
                     $(this).removeClass('open');
                 });
         })
-            
-    let relatedImgs = []
 
-    data.relatedProducts.forEach(thing => relatedImgs.push(thing))
+        let relatedImgs = []
 
-    fetch(PRODUCTS_URL)
-    .then(response => response.json())
-    .then(data2 => {
+        data.relatedProducts.forEach(thing => relatedImgs.push(thing))
 
-        relatedImgs.forEach(thing => {
+        fetch(PRODUCTS_URL)
+            .then(response => response.json())
+            .then(data2 => {
 
-                $("#productImagesGallery").append(`
-                    <img src=${data2[thing].imgSrc} onclick='window.location.href = "product-info.html"'>
-                `)
+                relatedImgs.forEach(thing => {
 
-        })
-    })
+                    $("#productImagesGallery").append(`<img src=${data2[thing].imgSrc} onclick='window.location.href = "product-info.html"'>`)
+
+                })
+            })
     })
 
 
@@ -73,26 +72,29 @@ var addComment = (name, score, comment, date) => {
     for (let i = 0; i < 5; i++) {
         if (i < score) {
             commentCard += ` <span class="fa fa-star checked"> </span>`
-            } else {
-                commentCard += `<span class="fa fa-star"></span>`
-            }
+        } else {
+            commentCard += `<span class="fa fa-star"></span>`
         }
-
-        commentCard += `<p>${comment}</p></div>`
-
-
-        $(".comments-box").append(commentCard)
     }
 
+    commentCard += `<p>${comment}</p></div>`
+
+
+    $(".comments-box").append(commentCard)
+}
+
 // Carga de todos los comentarios
-fetch(PRODUCT_INFO_COMMENTS_URL)
-    .then(res => res.json())
-    .then(data => {
-        // console.log(data)
-        data.forEach(comment => {
-            addComment(comment.user, comment.score, comment.description, comment.dateTime)
-        })
+const fetchData = async (url) => {
+    showSpinner()
+    const response = await fetch(url)
+    const data = await response.json()
+    data.forEach(comment => {
+        addComment(comment.user, comment.score, comment.description, comment.dateTime)
     })
+    hideSpinner()
+}
+fetchData(PRODUCT_INFO_COMMENTS_URL)
+
 
 
 // Boton de publicar comentarios

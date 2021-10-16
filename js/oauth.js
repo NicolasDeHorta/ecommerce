@@ -67,7 +67,7 @@ var GoogleAuth;
         $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => {
-          sessionStorage.setItem('user', GoogleAuth.currentUser.get().Ws.Qe)
+          sessionStorage.setItem('user', GoogleAuth.currentUser.get().Zw.it.HU)
           let date = new Date();
           sessionStorage.setItem('logInDate', date.toLocaleString());
           window.location.href = "./home.html"

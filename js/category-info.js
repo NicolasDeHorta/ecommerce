@@ -1,3 +1,5 @@
+// Este archivo fue creado por JaP Jovenes a Programar - Ceibal
+
 var category = {};
 
 function showImagesGallery(array){

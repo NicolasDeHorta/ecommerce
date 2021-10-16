@@ -1,3 +1,5 @@
+// Este archivo fue creado por JaP Jovenes a Programar - Ceibal
+
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
