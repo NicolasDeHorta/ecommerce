@@ -424,3 +424,28 @@ form {
 #buyButton {
   margin-bottom: 3rem
 }
+
+/* My-Profile inputs */
+
+.profile-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-element {
+  width: 40%;
+  margin: 1rem  
+}
+
+div.form-element {
+  color:#AAA;
+  margin: 2rem
+}
+
+h4 {
+  color: black
+}

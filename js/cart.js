@@ -4,6 +4,7 @@ let cartItems = []
 let basketPrice = 0
 let subtotal = 0
 let tax = parseFloat($('input[name="shipmentType"]:checked').val())
+let buyMsg = ""
 
 getItem('https://japdevdep.github.io/ecommerce-api/cart/654.json')
 
@@ -18,6 +19,13 @@ async function getItem(url) {
     recalculatePrice()
     hideSpinner()
 }
+
+const getBuyInfo = async () => {
+    const response = await fetch(CART_BUY_URL)
+    const data = await response.json()
+    buyMsg = data.msg
+}
+
 
 // FUNCTIONS //
 var displayAllProducts = (arr) =>  {
@@ -62,7 +70,7 @@ var recalculatePrice = () => {
 
     $('#basketPrice').html(`UYU ${Math.round(basketPrice,2)}`)
     $('#subtotal').html(`UYU ${Math.round(subtotal,0)}`)
-    $('#shipTax').html(`${Math.round((tax-1)*100,0)}%`)
+    $('#shipTax').html(`UYU ${Math.round((tax-1)*subtotal,0)}`)
 }
 
 
@@ -84,11 +92,11 @@ var removeItem = (item) => {
 }
 
 
-
+console.log(getBuyInfo())
 
 const buySuccess = () => { //creado con sweetAlert2
     Swal.fire({ 
-        title: 'Compra exitosa!!',
+        title: buyMsg,
         width: 600,
         padding: '3em',
         background: '#fffb url(https://i.pinimg.com/originals/6b/15/25/6b1525302df7a2226bdd0b586712110a.gif) no-repeat center',
@@ -107,3 +115,4 @@ const buySuccess = () => { //creado con sweetAlert2
 // EVENT LISTENERS de elementos del form
 $('input[name="shipmentType"]').change(() => recalculatePrice())
 $('#buyButton').click(() => $('#location').val() && $('#adress').val() ? buySuccess() : null ) //checkea si estan los campos definidos
+
