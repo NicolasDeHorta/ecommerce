@@ -41,9 +41,7 @@ var GoogleAuth;
       });
     }
 
-    document.getElementById("jsdhfga").addEventListener("click", () => {    })
-    
-  
+     
     function handleAuthClick() {
       if (GoogleAuth.isSignedIn.get()) {
         // User is authorized and has clicked "Sign out" button.
@@ -67,7 +65,7 @@ var GoogleAuth;
         $('#auth-status').html('Ya has dado permisos de acceso de Google a esta App');
         $('#continue-access-button').css('display', 'inline-block')
         $('#continue-access-button').click(() => {
-          sessionStorage.setItem('user', GoogleAuth.currentUser.get().Zw.it.HU)
+          sessionStorage.setItem('user', GoogleAuth?.currentUser?.get()?.Vd?.nt?.Se)
           let date = new Date();
           sessionStorage.setItem('logInDate', date.toLocaleString());
           window.location.href = "./home.html"
