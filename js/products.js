@@ -6,7 +6,6 @@ const fetchProducts = async (url) => {
 
     data.forEach((item) => productsArray.push(item))
     showList(productsArray)
-
 }
 
 fetchProducts(PRODUCTS_URL)
@@ -78,7 +77,6 @@ var sortList = parameter => {
     showList(productsArray)
 }
 
-
 var filterList = () => {
     
     let min = $("#filterMin").val()
@@ -99,10 +97,6 @@ var filterText = () => {
     let text = $("#search-bar").val().toLowerCase()
     text != undefined ? showList(productsArray.filter(item => {return ( item.name.toLowerCase().includes(text) || item.description.toLowerCase().includes(text))} )) : null
 }
-
-
-
-    
 //Botones de filtros
 $("#filter-price-ascending").click(() => sortList('priceAsc')) 
 $("#filter-price-descending").click(() => sortList('priceDesc')) 

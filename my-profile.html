@@ -40,6 +40,7 @@
   <script src="js/navbar.js" defer></script>
   <script src="js/init.js" defer></script>
   <script src="js/my-profile.js" defer  ></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -50,6 +51,10 @@
     <form action="" onsubmit="return false" class="container profile-form">
       <p class="lead">Por favor guarda los datos de tu perfil</p>
       <div class="profile-form d-flex container">
+        <div class="form-element">
+          <label for="profileImg">Imagen de Perfil*</label>
+          <input type="file" class="form-control" name="profileImg">
+        </div>
       <div class="form-element">
         <label for="name">Nombre*</label>
         <input type="text" class="form-control" name="name" placeholder="..." required>
@@ -66,12 +71,13 @@
         <label for="age">Edad</label>
         <input type="text" class="form-control" name="age">
       </div>
-      <div class="form-element">
-        <label for="lastname">e-mail</label>
+      <div class="form-element" >
+        <label for="lastname"> e-mail </label>
         <input type="email" class="form-control" name="email" placeholder="example@mail.com">
       </div>  
 
       <div class="form-element">
+
         <label for="phone">Teléfono</label>
         <input type="text" class="form-control" name="phone">
       </div>

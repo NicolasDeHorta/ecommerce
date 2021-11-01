@@ -449,3 +449,7 @@ div.form-element {
 h4 {
   color: black
 }
+
+#profile-img {
+  height: 100px
+}

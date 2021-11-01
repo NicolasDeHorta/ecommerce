@@ -1,13 +1,17 @@
+let currentProfileImg = null
+
 const renderNormalPage = ()  => {
 
     //desestructuracion del objeto
-    const {name, lastname, birth, age, email, phone} = JSON.parse(localStorage.getItem('profileData'))
+    const {name, lastname, birth, age, email, phone, profileImg} = JSON.parse(localStorage.getItem('profileData'))
 
-    console.log(JSON.parse(localStorage.getItem('profileData')))
     $('.mainProfilePage').html(`
     <div class="container profile-form">
     <p class="lead">Estos son los datos de tu perfil guardados</p>
       <div class="profile-form d-flex container">
+      <div class="form-element">
+      <img src="${profileImg}" id="profile-img">
+    </div>
       <div class="form-element">
         <p >Nombre</p>
         <h4 id="name"> ${name}</h4>
@@ -49,23 +53,47 @@ const renderEditPage = () => {
 
 
 if (localStorage.getItem('profileData')) {
-    renderNormalPage()
+  renderNormalPage()
 }
 
 
 const saveProfileData = () => {
-    let object = {
-        "name": $("input[name='name']").val(),
-        "lastname": $("input[name='lastname']").val(),
-        "birth": $("input[name='birth']").val(),
-        "email": $("input[name='email']").val(),
-        "age": $("input[name='age']").val(),
-        "phone": $("input[name='phone']").val()
-    }
+  if  ($("input[name='name']").val() && $("input[name='lastname']").val()) {
 
-    localStorage.setItem('profileData', JSON.stringify(object))
-    console.log("datos guardados")
-    window.location.href = "my-profile.html" 
+    let object = {
+      "name":     $("input[name='name']").val(),
+      "lastname": $("input[name='lastname']").val(),
+      "birth":    $("input[name='birth']").val(),
+      "email":    $("input[name='email']").val(),
+      "age":      $("input[name='age']").val(),
+      "phone":    $("input[name='phone']").val(),
+      "profileImg": currentProfileImg
+  }
+
+  localStorage.setItem('profileData', JSON.stringify(object))
+
+
+  swal("¡ Cambios guardados !", {
+    icon: "success",
+    }
+  )
+  .then(function() {
+    window.location.href = "my-profile.html";
+
+  });
+  }
+
+    
 }
+
+$('input[name="profileImg"]').change((e) => {
+  const reader = new FileReader()
+  reader.readAsDataURL(e.target.files[0])  
+
+  reader.addEventListener('load', () => {
+      currentProfileImg = reader.result
+  })
+})
+
 
 $('#saveProfile').click(() => saveProfileData())
