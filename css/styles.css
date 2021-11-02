@@ -461,3 +461,9 @@ h4 {
   flex-direction: row;
   justify-content: space-around;
 }
+
+#tipo-de-pago {
+  position: absolute;
+  margin: auto;
+  background: red;
+}

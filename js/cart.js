@@ -112,6 +112,38 @@ const buySuccess = () => { //creado con sweetAlert2
       $('#adress').val(" ")
 }
 
+$('input[name="forma-pago"]').change((e) => {
+    if (e.target.value == "credit-card"){
+        let complete = false
+        $('#form-credit-card').attr('hidden',false)  
+        $('#form-transfer').attr('hidden',true)  
+        $('#form-credit-card input').attr('required',true)
+        $('#form-transfer input').attr('required',false)
+
+        $('#form-credit-card input').change(() => {
+            count = 0
+            for (let input of $('#form-credit-card input')) {
+                input.value  ? count++ : null
+            }
+
+            (count == 3) ? $('#save-forma-pago').attr('hidden',false) : $('#save-forma-pago').attr('hidden',true)
+            
+        })
+
+        } else {
+        $('#form-credit-card').attr('hidden',true)  
+        $('#form-transfer').attr('hidden',false)
+        $('#form-transfer input').attr('required',true)
+        $('#form-credit-card input').attr('required',false)
+        $('#form-transfer input').change((e) => {
+            e.target.value ? $('#save-forma-pago').attr('hidden',false) : $('#save-forma-pago').attr('hidden',true)
+        })
+    } 
+})
+
+$('#save-forma-pago').click(() => $('#buyButton').attr('hidden',false))
+
+
 // EVENT LISTENERS de elementos del form
 $('input[name="shipmentType"]').change(() => recalculatePrice())
 $('#buyButton').click(() => $('#location').val() && $('#adress').val() ? buySuccess() : null ) //checkea si estan los campos definidos
