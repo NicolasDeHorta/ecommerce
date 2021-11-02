@@ -112,14 +112,29 @@ const buySuccess = () => { //creado con sweetAlert2
       $('#adress').val(" ")
 }
 
+const buyNotSuccess = () => { //creado con sweetAlert2
+    Swal.fire({ 
+        title: "Faltan datos",
+        width: 600,
+        padding: '3em',
+        confirmButtonText: 'Ok',
+      })
+      $('#location').val(" ")
+      $('#adress').val(" ")
+}
+
 $('input[name="forma-pago"]').change((e) => {
+    $('#save-forma-pago').attr('hidden',true)
+
     if (e.target.value == "credit-card"){
         let complete = false
         $('#form-credit-card').attr('hidden',false)  
         $('#form-transfer').attr('hidden',true)  
         $('#form-credit-card input').attr('required',true)
         $('#form-transfer input').attr('required',false)
-
+        for (input of $('#form-transfer input')) {
+            input.value = null
+        }
         $('#form-credit-card input').change(() => {
             count = 0
             for (let input of $('#form-credit-card input')) {
@@ -131,8 +146,12 @@ $('input[name="forma-pago"]').change((e) => {
         })
 
         } else {
-        $('#form-credit-card').attr('hidden',true)  
+        $('#form-credit-card').attr('hidden',true) 
         $('#form-transfer').attr('hidden',false)
+        for (input of $('#form-credit-card input')) {
+            input.value = null
+        }
+
         $('#form-transfer input').attr('required',true)
         $('#form-credit-card input').attr('required',false)
         $('#form-transfer input').change((e) => {
@@ -141,10 +160,8 @@ $('input[name="forma-pago"]').change((e) => {
     } 
 })
 
-$('#save-forma-pago').click(() => $('#buyButton').attr('hidden',false))
-
-
+$('#save-forma-pago').click(() =>$('#buyButton').attr('hidden', false) )
 // EVENT LISTENERS de elementos del form
 $('input[name="shipmentType"]').change(() => recalculatePrice())
-$('#buyButton').click(() => $('#location').val() && $('#adress').val() ? buySuccess() : null ) //checkea si estan los campos definidos
+$('#buyButton').click(() => $('#location').val() && $('#adress').val() && (($('#card-number').val() && $('#card-vencimiento').val() && $('#card-security').val()) ||   $('#transfer-account').val() ) ? buySuccess() : buyNotSuccess() ) //checkea si estan los campos definidos
 
