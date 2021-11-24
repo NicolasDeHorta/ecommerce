@@ -1,6 +1,7 @@
 // VARIABLES //
 
 let cartItems = []
+let countries = []
 let basketPrice = 0
 let subtotal = 0
 let tax = parseFloat($('input[name="shipmentType"]:checked').val())
@@ -8,26 +9,53 @@ let buyMsg = ""
 
 getItem('https://japdevdep.github.io/ecommerce-api/cart/654.json')
 
-// GETTING DATA //
+// GETTING THE DATA //
 async function getItem(url) {
     showSpinner()
     const response = await fetch(url)
     const data = await response.json()
-    
-    data?.articles.map(product => {cartItems.push(product)})
+    let tempId = 0;
+    data?.articles.map(product => {
+        product.id = "product" + tempId++;
+        cartItems.push(product)})
     displayAllProducts(cartItems)
     recalculatePrice()
     hideSpinner()
 }
 
+const fetchCountries = async () => {
+    const response = await fetch("http://vocab.nic.in/rest.php/country/json")
+    const data = await response.json()
+
+    //Tomo los paises y los paso a minusculas con primera letra mayuscula
+    for (country of data.countries) {
+        let countryStr = country.country.country_name
+        let temp = countryStr[0].toUpperCase() + countryStr.slice(1,countryStr.length).toLowerCase()
+        countries.push(temp)
+    }
+
+    countries.sort() //ordeno alfabeticamente
+    let options = "<option value='' disabled selected hidden>Selecciona tu pais...</option>"
+    for (country of countries) {
+        options += `
+        <option value="">${country}</option>
+        `
+        $('#country').attr('disabled', false)
+        $('#country').html(options) 
+    }
+    
+}
+
+fetchCountries()
+
 const getBuyInfo = async () => {
     const response = await fetch(CART_BUY_URL)
     const data = await response.json()
-    buyMsg = data.msg
+    buyMsg = data.msg 
 }
 
 
-// FUNCTIONS //
+// CART FUNCTIONS //
 var displayAllProducts = (arr) =>  {
     let htmlContentToAppend = ""
     arr.map(product => {
@@ -42,7 +70,7 @@ var displayAllProducts = (arr) =>  {
                     <h4 class="mb-1"> ${product.name} </h4>
                      <small class="text-muted"> <input type="number" class="form-control itemQty" name="${product.name}" id="productCountInput" placeholder="" required="true"  min="0" value="${product.count}"> cantidad</small>
                 </div>
-                <h5 class="mb-1"> ${product.currency} ${product.unitCost} </h5>
+                <h5 id="${product.id}" class="mb-1"> ${product.currency} ${product.unitCost} </h5>
                 <br><p class="text-muted">Agregado a Carrito </p>
                 <button class="btn btn-danger remove-button" name="${product.name}" > Remove item</button>
             </div>
@@ -71,6 +99,11 @@ var recalculatePrice = () => {
     $('#basketPrice').html(`UYU ${Math.round(basketPrice,2)}`)
     $('#subtotal').html(`UYU ${Math.round(subtotal,0)}`)
     $('#shipTax').html(`UYU ${Math.round((tax-1)*subtotal,0)}`)
+    for (let id = 0; id < cartItems.length; id++) {
+
+        $(`#product${id}`).html(`${cartItems[id].currency} ${cartItems[id].unitCost * cartItems[id].count}`)
+        
+    }
 }
 
 
@@ -78,6 +111,8 @@ var changeQty = (id, newQty) => { // cambia la cantidad de items
     cartItems.map(item => {
         item.name == id ? item.count = newQty : null  
         recalculatePrice()
+        item.currentSubtotal = item.count * item.unitCost
+        
     })
 }
 
@@ -92,8 +127,7 @@ var removeItem = (item) => {
 }
 
 
-console.log(getBuyInfo())
-
+// FORM FUNCTIONS //
 const buySuccess = () => { //creado con sweetAlert2
     Swal.fire({ 
         title: buyMsg,
@@ -140,7 +174,6 @@ $('input[name="forma-pago"]').change((e) => {
             for (let input of $('#form-credit-card input')) {
                 input.value  ? count++ : null
             }
-
             (count == 3) ? $('#save-forma-pago').attr('hidden',false) : $('#save-forma-pago').attr('hidden',true)
             
         })
@@ -160,8 +193,8 @@ $('input[name="forma-pago"]').change((e) => {
     } 
 })
 
-$('#save-forma-pago').click(() =>$('#buyButton').attr('hidden', false) )
 // EVENT LISTENERS de elementos del form
+$('#save-forma-pago').click(() =>$('#buyButton').attr('hidden', false) )
 $('input[name="shipmentType"]').change(() => recalculatePrice())
 $('#buyButton').click(() => $('#location').val() && $('#adress').val() && (($('#card-number').val() && $('#card-vencimiento').val() && $('#card-security').val()) ||   $('#transfer-account').val() ) ? buySuccess() : buyNotSuccess() ) //checkea si estan los campos definidos
 
