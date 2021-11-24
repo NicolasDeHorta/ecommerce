@@ -1,7 +1,5 @@
 // VARIABLES //
-
 let cartItems = []
-let countries = []
 let basketPrice = 0
 let subtotal = 0
 let tax = parseFloat($('input[name="shipmentType"]:checked').val())
@@ -23,30 +21,23 @@ async function getItem(url) {
     hideSpinner()
 }
 
-const fetchCountries = async () => {
-    const response = await fetch("http://vocab.nic.in/rest.php/country/json")
-    const data = await response.json()
+let countryArr = []
+countries.map((country) => {
+    let countryStr = country.country["country_name"]
+    countryStr = countryStr[0].toUpperCase() + countryStr.slice(1,countryStr.length).toLowerCase()
+    countryArr.push(countryStr)
+})
+countryArr.sort() //ordeno alfabeticamente
+console.log(countryArr)
 
-    //Tomo los paises y los paso a minusculas con primera letra mayuscula
-    for (country of data.countries) {
-        let countryStr = country.country.country_name
-        let temp = countryStr[0].toUpperCase() + countryStr.slice(1,countryStr.length).toLowerCase()
-        countries.push(temp)
-    }
-
-    countries.sort() //ordeno alfabeticamente
-    let options = "<option value='' disabled selected hidden>Selecciona tu pais...</option>"
-    for (country of countries) {
-        options += `
-        <option value="">${country}</option>
-        `
-        $('#country').attr('disabled', false)
-        $('#country').html(options) 
-    }
-    
+let options = "<option value='' disabled selected hidden>Selecciona tu pais...</option>"
+for (country of countryArr) {
+    options += `
+    <option value="">${country}</option>
+    `
+    $('#country').attr('disabled', false)
+    $('#country').html(options) 
 }
-
-fetchCountries()
 
 const getBuyInfo = async () => {
     const response = await fetch(CART_BUY_URL)
